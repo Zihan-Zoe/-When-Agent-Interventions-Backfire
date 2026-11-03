@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>When Agent Interventions Backfire</title>
+<meta name="description" content="Adding skills or stronger harnesses to AI agents can backfire. A case log from AIAS+ 2026.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&amp;family=JetBrains+Mono:wght@500;700&amp;display=swap">
+<style>
+body{margin:0;background:#fff4dd}
+a{color:#1d3f8f}a:hover{color:#1c1814}
+</style>
+</head>
+<body>
+<div style="background: #fff4dd; color: #1c1814; font-family: 'Poppins', system-ui, sans-serif; min-height: 100vh">
+<div style="max-width: 920px; margin: 0 auto; padding: 72px 24px 96px; display: flex; flex-direction: column; gap: 56px">
+
+<header style="display: flex; flex-direction: column; gap: 24px">
+<div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap; padding-bottom: 20px; border-bottom: 2px solid #1c1814">
+<div style="display: flex; flex-direction: column; gap: 2px">
+<div style="font-size: 15px; font-weight: 700"><a href="https://www.aiasplus.org/" style="color: #1c1814; text-decoration: none">AIAS⁺ 2026</a></div>
+<div style="font-size: 14px; color: #5b5146">Chen Institute Symposium for AI Advancing Science and Society · November 5–7, 2026</div>
+</div>
+</div>
+<div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; color: #5b5146">Research project · Agent systems</div>
+<h1 style="margin: 0; font-size: clamp(2.6rem, 6vw, 4.4rem); line-height: 1.05; font-weight: 700; letter-spacing: -0.02em">When Agent Interventions <span style="background: linear-gradient(transparent 55%, #f2a58f 55%); padding: 0 4px">Backfire</span></h1>
+<p style="margin: 0; font-size: 1.15rem; line-height: 1.65; max-width: 760px">Adding skills or stronger harnesses to agents can backfire. An evolved skill learned a math benchmark’s shortcut, that one recurring answer option is always correct, lifting those questions from 11% to 72% while dropping the rest from 53% to 44%. Another optimized skill broke the expected answer format, collapsing a working system. Stronger harnesses rescued thousands of failed runs but broke thousands of correct ones, and faithfully executed a bad skill instead of fixing it.</p>
+<div style="display: flex; flex-wrap: wrap; gap: 12px">
+<div style="border: 2px solid #1c1814; border-radius: 999px; padding: 8px 16px; background: #fffaf0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 500">9 benchmarks</div>
+<div style="border: 2px solid #1c1814; border-radius: 999px; padding: 8px 16px; background: #fffaf0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 500">4 models</div>
+<div style="border: 2px solid #1c1814; border-radius: 999px; padding: 8px 16px; background: #fffaf0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 500">skills × harnesses × budgets</div>
+<div style="border: 2px solid #1c1814; border-radius: 999px; padding: 8px 16px; background: #fffaf0; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 500">~0.9M trajectories</div>
+</div>
+</header>
+
+<section style="display: flex; flex-direction: column; gap: 28px">
+<div style="display: flex; align-items: baseline; justify-content: space-between; flex-wrap: wrap; gap: 12px; border-bottom: 2px solid #1c1814; padding-bottom: 12px">
+<h2 style="margin: 0; font-size: 1.6rem; font-weight: 700">Case log</h2>
+<div style="display: flex; gap: 16px; flex-wrap: wrap; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5b5146">
+<span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 14px; border-radius: 4px; background: #2459c9; border: 2px solid #1c1814"></span>Helps</span>
+<span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 14px; border-radius: 4px; background: #e8603c; border: 2px solid #1c1814"></span>Hurts</span>
+<span style="display: flex; align-items: center; gap: 6px"><span style="width: 14px; height: 14px; border-radius: 4px; background: #d8ccb4; border: 2px solid #1c1814"></span>Baseline</span>
+</div>
+</div>
+
+<article style="background: #fffaf0; border: 2px solid #1c1814; border-radius: 18px; box-shadow: 5px 5px 0 #1c1814; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 700">Case 01</span>
+</div>
+<h3 style="margin: 0; font-size: 1.45rem; line-height: 1.3; font-weight: 700">An evolved skill learned the benchmark’s shortcut</h3>
+<p style="margin: 0; line-height: 1.65; color: #3a322a">On a multiple-choice math benchmark, one recurring answer option is <mark style="background: linear-gradient(transparent 50%, #f8c3b1 50%); color: #1c1814; font-weight: 600; padding: 0 2px">correct whenever it appears</mark>. Automatically built skills picked this up and told the agent to watch for it. Accuracy soared where the option appears, and <mark style="background: linear-gradient(transparent 50%, #f8c3b1 50%); color: #1c1814; font-weight: 600; padding: 0 2px">fell everywhere else</mark>, as the rule got over-applied. Averaged over the whole benchmark, the effect can look like a modest gain or like nothing at all.</p>
+<div style="display: flex; flex-direction: column; gap: 12px; padding-top: 4px">
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 14px; font-weight: 600">Questions with the recurring option</div>
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 92px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5b5146">No skill</span><div style="flex: 1; height: 22px; border: 2px solid #1c1814; border-radius: 8px; background: #fff4dd; overflow: hidden"><div style="width: 11.2%; height: 100%; background: #d8ccb4"></div></div><span style="width: 60px; text-align: right; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 700">11.2%</span></div>
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 92px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5b5146">With skill</span><div style="flex: 1; height: 22px; border: 2px solid #1c1814; border-radius: 8px; background: #fff4dd; overflow: hidden"><div style="width: 71.5%; height: 100%; background: #2459c9"></div></div><span style="width: 60px; text-align: right; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 700">71.5%</span></div>
+</div>
+<div style="display: flex; flex-direction: column; gap: 6px">
+<div style="font-size: 14px; font-weight: 600">All other questions</div>
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 92px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5b5146">No skill</span><div style="flex: 1; height: 22px; border: 2px solid #1c1814; border-radius: 8px; background: #fff4dd; overflow: hidden"><div style="width: 52.7%; height: 100%; background: #d8ccb4"></div></div><span style="width: 60px; text-align: right; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 700">52.7%</span></div>
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 92px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5b5146">With skill</span><div style="flex: 1; height: 22px; border: 2px solid #1c1814; border-radius: 8px; background: #fff4dd; overflow: hidden"><div style="width: 43.7%; height: 100%; background: #e8603c"></div></div><span style="width: 60px; text-align: right; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 700">43.7%</span></div>
+</div>
+<div style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 12px; color: #5b5146">Qwen3.5-9B, averaged over four harness levels</div>
+</div>
+</article>
+
+<article style="background: #fffaf0; border: 2px solid #1c1814; border-radius: 18px; box-shadow: 5px 5px 0 #1c1814; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 700">Case 02</span>
+</div>
+<h3 style="margin: 0; font-size: 1.45rem; line-height: 1.3; font-weight: 700">A score-optimized skill broke a working system</h3>
+<p style="margin: 0; line-height: 1.65; color: #3a322a">On a reading-comprehension QA task, a strong model did well with no skill at all. A skill that had been optimized for score on another model <mark style="background: linear-gradient(transparent 50%, #f8c3b1 50%); color: #1c1814; font-weight: 600; padding: 0 2px">overrode the expected answer format</mark>, and the same model collapsed. The capability was still there; the skill had <mark style="background: linear-gradient(transparent 50%, #f8c3b1 50%); color: #1c1814; font-weight: 600; padding: 0 2px">rewritten the contract</mark>.</p>
+</article>
+
+<article style="background: #fffaf0; border: 2px solid #1c1814; border-radius: 18px; box-shadow: 5px 5px 0 #1c1814; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 700">Case 03</span>
+</div>
+<h3 style="margin: 0; font-size: 1.45rem; line-height: 1.3; font-weight: 700">A stronger harness faithfully executes the wrong policy</h3>
+<p style="margin: 0; line-height: 1.65; color: #3a322a">On a procedure-following workflow, a stronger execution harness took the agent from 33.9 to 88.6 when no skill was supplied. With a mismatched skill, the agent stayed <mark style="background: linear-gradient(transparent 50%, #f8c3b1 50%); color: #1c1814; font-weight: 600; padding: 0 2px">stuck at the floor at every harness level</mark>. More execution support <mark style="background: linear-gradient(transparent 50%, #f8c3b1 50%); color: #1c1814; font-weight: 600; padding: 0 2px">carried out the bad plan</mark>; it did not repair it.</p>
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 4px">
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 150px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5b5146">No skill, basic</span><div style="flex: 1; height: 22px; border: 2px solid #1c1814; border-radius: 8px; background: #fff4dd; overflow: hidden"><div style="width: 33.9%; height: 100%; background: #d8ccb4"></div></div><span style="width: 52px; text-align: right; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 700">33.9</span></div>
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 150px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5b5146">No skill, stronger</span><div style="flex: 1; height: 22px; border: 2px solid #1c1814; border-radius: 8px; background: #fff4dd; overflow: hidden"><div style="width: 88.6%; height: 100%; background: #2459c9"></div></div><span style="width: 52px; text-align: right; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 700">88.6</span></div>
+<div style="display: flex; align-items: center; gap: 12px"><span style="width: 150px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 13px; color: #5b5146">Bad skill, any</span><div style="flex: 1; height: 22px; border: 2px solid #1c1814; border-radius: 8px; background: #fff4dd; overflow: hidden"><div style="width: 1.7%; height: 100%; background: #e8603c"></div></div><span style="width: 52px; text-align: right; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 700">floor</span></div>
+</div>
+</article>
+
+<article style="background: #fffaf0; border: 2px solid #1c1814; border-radius: 18px; box-shadow: 5px 5px 0 #1c1814; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 700">Case 04</span>
+</div>
+<h3 style="margin: 0; font-size: 1.45rem; line-height: 1.3; font-weight: 700">The same upgrade rescues thousands and breaks thousands</h3>
+<p style="margin: 0; line-height: 1.65; color: #3a322a">Across 85,392 matched runs, upgrading the harness <mark style="background: linear-gradient(transparent 50%, #c9d8fb 50%); color: #1c1814; font-weight: 600; padding: 0 2px">rescued 3,886 runs</mark> that had failed, and <mark style="background: linear-gradient(transparent 50%, #f8c3b1 50%); color: #1c1814; font-weight: 600; padding: 0 2px">broke 2,340 runs</mark> that had been correct. A benchmark average only shows the difference between the two.</p>
+<div style="display: flex; flex-direction: column; gap: 8px; padding-top: 4px">
+<div style="display: flex; height: 34px; border: 2px solid #1c1814; border-radius: 10px; overflow: hidden">
+<div style="width: 62.4%; background: #2459c9; color: #ffffff; display: flex; align-items: center; padding-left: 12px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 700">3,886 rescued</div>
+<div style="width: 37.6%; background: #e8603c; color: #1c1814; display: flex; align-items: center; padding-left: 12px; font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 700; border-left: 2px solid #1c1814">2,340 broken</div>
+</div>
+</div>
+</article>
+
+<article style="background: #fffaf0; border: 2px solid #1c1814; border-radius: 18px; box-shadow: 5px 5px 0 #1c1814; padding: 28px; display: flex; flex-direction: column; gap: 16px">
+<div style="display: flex; align-items: center; gap: 12px; flex-wrap: wrap">
+<span style="font-family: 'JetBrains Mono', ui-monospace, monospace; font-size: 14px; font-weight: 700">Case 05</span>
+</div>
+<h3 style="margin: 0; font-size: 1.45rem; line-height: 1.3; font-weight: 700">Self-evolving skills learn procedures, not facts</h3>
+<p style="margin: 0; line-height: 1.65; color: #3a322a">On a factual-recall benchmark, switching models changed accuracy by about 61 points, while every self-evolved skill, harness and extra budget moved it by less than one point. <mark style="background: linear-gradient(transparent 50%, #f8c3b1 50%); color: #1c1814; font-weight: 600; padding: 0 2px">A procedure cannot supply a missing fact.</mark> In follow-up experiments, <mark style="background: linear-gradient(transparent 50%, #c9d8fb 50%); color: #1c1814; font-weight: 600; padding: 0 2px">writing the knowledge directly into the skill</mark> may recover it.</p>
+</article>
+
+</section>
+
+<footer style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; border-top: 2px solid #1c1814; padding-top: 20px; font-size: 14px; color: #5b5146">
+<span>Contact: <a href="mailto:zihanjin@usc.edu">zihanjin@usc.edu</a></span>
+</footer>
+
+</div>
+</div>
+</body>
+</html>
